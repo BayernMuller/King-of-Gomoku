@@ -1,9 +1,31 @@
-from ctypes import *
-from console_pipe import *
+from Gomok import *
+import numpy as np
+from flask import Flask, request, jsonify
 
-pipe = console_pipe('Yixin.exe')
+app = Flask(__name__)
+game = Gomok()
 
-pipe.Write(b'START 15\r\nBEGIN\r\n')
+@app.route('/Gomok', methods = ['GET','POST'])
+def Gomok():
+	global game
+	if request.method == 'POST':
+		x = request.json['x']
+		y = request.json['y']
+		game.put_point(x, y)
+		x, y = game.get_point()
+		return jsonify({'x' : x, 'y' : y})
 
-while True:
-	print(pipe.Read(1024)[1])
+	elif request.method == 'GET':
+		html = ''
+		board = np.full((15,15), '□')
+		for i, pt in enumerate(game.get_board()):
+			board[pt[1], pt[0]] = '■' if i % 2 is not 0 else '▲'
+		for i in range(15):
+			html = html + ' '.join(board[i]) + '<br>'
+		return html
+
+	
+
+if __name__ == '__main__':
+	game.get_point()
+	app.run(debug = True)

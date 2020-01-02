@@ -12,7 +12,6 @@ class console_pipe():
 		self.hInWrite = None;
 		self.hOutRead = None;
 		self.hOutWrite = None;
-
 		sa = pywintypes.SECURITY_ATTRIBUTES()
 		sa.SetSecurityDescriptorDacl(1, None, 0)
 
@@ -34,20 +33,15 @@ class console_pipe():
 		if self.info[0]:
 			print('create process success')
 
-	def Write(self, buf):
+	def write(self, buf):
 		return win32file.WriteFile(self.hInWrite, buf, None)
 
-	def Read(self, length):
+	def read(self, length):
 		return win32file.ReadFile(self.hOutRead, length, None)
 
-	def Close(self):
+	def close(self):
 		win32process.TerminateProcess(self.info[0], 0)
 		win32api.CloseHandle(self.hInRead)
 		win32api.CloseHandle(self.hInWrite)
 		win32api.CloseHandle(self.hOutRead)
 		win32api.CloseHandle(self.hOutWrite)
-
-
-
-
-
