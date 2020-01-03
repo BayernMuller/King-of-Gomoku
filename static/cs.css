@@ -1,0 +1,28 @@
+body
+{
+	background-color:white;
+	text-align: center;
+	line-height:2.5em
+}
+
+.board-wrap
+{
+	font-size: 40px;
+	color: black;
+	font-family: 'Courier Prime', monospace;
+	/*display: table;*/
+	/*width: 100%;*/
+	/*height: 100%;*/
+}
+
+.title
+{
+	font-size: 60px;
+}
+
+/*
+.board 
+{
+	display: table-cell;
+	vertical-align: middle;
+}*/

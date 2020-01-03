@@ -1,0 +1,18 @@
+<html>
+<head>
+	<meta http-equiv="refresh", content="3">
+	<link rel="stylesheet" href="/static/cs.css">
+	<link href="https://fonts.googleapis.com/css?family=Courier+Prime:400,700&display=swap" rel="stylesheet">
+	<title> Gomoku </title>
+	<div class="board-wrap title"><br/>King of Gomoku<br/><br/></div>
+</head>
+<body>
+		<div class="board-wrap">
+			{% for n in board %}
+			{{''.join(n)}}<br>
+			{% endfor %}
+			<br/>
+			{{msg}}
+		</div>
+</body>
+</html>
