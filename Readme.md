@@ -6,9 +6,9 @@ A machine that plays Gomoku using following skills
 
 Raspberry Pi
 
-OpenCV
+C++ OpenCV
 
-Python, Flask
+Python, Flask, HTML, CSS
 
 Yixin Gomoku Engines
 
